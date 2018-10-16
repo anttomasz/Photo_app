@@ -9,9 +9,9 @@ window.onclick = function (event) {
     if (!event.target.matches(".dropbtn")) {
 
         var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
+        var y;
+        for (y = 0; y < dropdowns.length; y++) {
+            var openDropdown = dropdowns[y];
             if (openDropdown.classList.contains("show")) {
                 openDropdown.classList.remove("show");
             }
@@ -19,13 +19,21 @@ window.onclick = function (event) {
     }
 };
 
+// Sort images
+function sortGrid() {
+    var divToBeSorted = document.getElementById('imgcontainer').querySelectorAll('a');
+    var myArr = Array.from(divToBeSorted);
+    myArr.sort();
+    document.getElementById('imgcontainer').appendChild(myArr[0]);
+}
+
+// Modal
 var modal = document.getElementById('myModal');
 var i;
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var img = document.getElementsByClassName('imglightbox');
 var modalImg = document.getElementById('showimg');
-var captionText = document.getElementById('caption');
 for (i = 0; i < img.length; i++) {
     img[i].onclick = function (e) {
         e.preventDefault();
@@ -35,7 +43,7 @@ for (i = 0; i < img.length; i++) {
 }
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("closebtn")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
